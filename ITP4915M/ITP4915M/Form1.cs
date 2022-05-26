@@ -8,47 +8,79 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using ITP4915M.Store;
+
 namespace ITP4915M
 {
     public partial class Form1 : Form
     {
-        public store store;
         public Form1()
         {
             InitializeComponent();
-            GenerateButton();
-            store = new store();
-            this.flowLayoutPanel1.Controls.Add(store);
         }
 
-        private void GenerateButton()
+        private void closeProgram(object sender, EventArgs e)
         {
-        
-            /*
-            for(int i = 0; i < 1; i++)
-            {
-                Button button = new Button();
-                button.Text = "wwww";
+            Environment.Exit(0);
+        }
 
-                button.Size = new Size(30, 30);
-                flowLayoutPanel1.Controls.Add(button);
-            }
-            using (var db = new better_shopEntities())
-            {
-                var info1 = from i in db.items
-                            select i;
 
-                foreach(var item in info1)
+        private void DisableButton()
+        {
+            foreach (Control currentBtn in panelMenu.Controls)
+            {
+                if (currentBtn.GetType() == typeof(Button))
                 {
-                    MessageBox.Show(item.Item_Weight);
+                    currentBtn.Enabled = true;
+                    currentBtn.BackColor = Color.FromArgb(19, 211, 172);
+                    currentBtn.ForeColor = Color.FromArgb(255, 255, 255);
                 }
             }
-            */
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ActivateButton(object Sender)
         {
+            if (Sender == null) return;
+            
+            DisableButton();
+            Button currentBtn = (Button)Sender;
+
+            currentBtn.Enabled = false;
+            currentBtn.BackColor = Color.FromArgb(22, 253, 206);
+            currentBtn.ForeColor = Color.FromArgb(31, 153, 206);
+            clearSubForm();
             
         }
+
+        private void buttonStore_Click(object sender, EventArgs e)
+        {
+            loadSubForm(new store(),sender);
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+        }
+
+        private void buttonDelivery_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+        }
+
+        private void clearSubForm()
+        {
+            PanelShowSubForm.Controls.Clear();
+        }
+
+        private void loadSubForm(UserControl subFrom,object sender)
+        {
+            ActivateButton(sender);
+
+            PanelShowSubForm.Controls.Add(subFrom);
+
+        }
+
+
     }
+
 }

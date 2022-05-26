@@ -14,9 +14,12 @@ namespace ITP4915M
     
     public partial class item
     {
-        public int Item_id { get; set; }
-        public Nullable<int> Item_price { get; set; }
-        public string Item_Dimension { get; set; }
-        public string Item_Weight { get; set; }
+        public string item_id { get; set; }
+        public int item_price { get; set; }
+        public string item_Dimension { get; set; }
+        public string item_Weight { get; set; }
+        public string item_describe { get; set; }
+        public int item_discount { get; set; }
+        public string item_name { get; set; }
     }
 }
