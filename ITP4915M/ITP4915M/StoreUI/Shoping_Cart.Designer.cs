@@ -31,6 +31,7 @@ namespace ITP4915M.StoreUI
         {
             this.buttonCtrete = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCtrete
@@ -40,7 +41,7 @@ namespace ITP4915M.StoreUI
             this.buttonCtrete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCtrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCtrete.ForeColor = System.Drawing.Color.Black;
-            this.buttonCtrete.Location = new System.Drawing.Point(306, 380);
+            this.buttonCtrete.Location = new System.Drawing.Point(206, 380);
             this.buttonCtrete.Name = "buttonCtrete";
             this.buttonCtrete.Size = new System.Drawing.Size(141, 58);
             this.buttonCtrete.TabIndex = 0;
@@ -51,18 +52,34 @@ namespace ITP4915M.StoreUI
             // 
             this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(253)))), ((int)(((byte)(252)))));
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(23, 40);
+            this.listView1.Location = new System.Drawing.Point(12, 41);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(699, 300);
+            this.listView1.Size = new System.Drawing.Size(522, 333);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(253)))), ((int)(((byte)(252)))));
+            this.buttonClose.BackgroundImage = global::ITP4915M.Properties.Resources.close;
+            this.buttonClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClose.ForeColor = System.Drawing.Color.Black;
+            this.buttonClose.Location = new System.Drawing.Point(508, 12);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(26, 23);
+            this.buttonClose.TabIndex = 2;
+            this.buttonClose.UseVisualStyleBackColor = false;
             // 
             // Shoping_Cart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(253)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(546, 450);
+            this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.buttonCtrete);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -76,5 +93,6 @@ namespace ITP4915M.StoreUI
 
         private System.Windows.Forms.Button buttonCtrete;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button buttonClose;
     }
 }
