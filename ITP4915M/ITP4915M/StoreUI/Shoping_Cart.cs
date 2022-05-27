@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ITP4915M
+namespace ITP4915M.StoreUI
 {
-    public partial class UserControl1 : UserControl
+    public partial class Shoping_Cart : Form
     {
-        public UserControl1()
+        public Shoping_Cart()
         {
             InitializeComponent();
         }

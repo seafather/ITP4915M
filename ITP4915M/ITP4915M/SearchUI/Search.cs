@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ITP4915M
+namespace ITP4915M.SearchUI
 {
     public partial class Search : UserControl
     {

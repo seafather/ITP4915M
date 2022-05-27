@@ -1,5 +1,5 @@
 ﻿
-namespace ITP4915M
+namespace ITP4915M.SearchUI
 {
     partial class Search
     {
@@ -29,8 +29,16 @@ namespace ITP4915M
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Search
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "Search";
+            this.Size = new System.Drawing.Size(632, 348);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

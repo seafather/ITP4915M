@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using ITP4915M.Store;
 
 namespace ITP4915M
 {
