@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="better_shopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="better_shopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="items" EntityType="better_shopModel.item" />
+    <EntitySet Name="orders" EntityType="better_shopModel.order" />
+    <EntitySet Name="orderdetails" EntityType="better_shopModel.orderdetail" />
+    <AssociationSet Name="item_id" Association="better_shopModel.item_id">
+      <End Role="item" EntitySet="items" />
+      <End Role="orderdetail" EntitySet="orderdetails" />
+    </AssociationSet>
+    <AssociationSet Name="order_id" Association="better_shopModel.order_id">
+      <End Role="order" EntitySet="orders" />
+      <End Role="orderdetail" EntitySet="orderdetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="item_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="item_price" Type="Int32" Nullable="false" />
+    <Property Name="item_Dimension" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="item_Weight" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="item_describe" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="item_discount" Type="Int32" Nullable="false" />
+    <Property Name="item_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="orderdetails" Relationship="better_shopModel.item_id" FromRole="item" ToRole="orderdetail" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="staff_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="order_amount" Type="Int32" />
+    <Property Name="order_created_date" Type="DateTime" />
+    <NavigationProperty Name="orderdetails" Relationship="better_shopModel.order_id" FromRole="order" ToRole="orderdetail" />
+  </EntityType>
+  <EntityType Name="orderdetail">
+    <Key>
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="item_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="order_id" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="item_qty" Type="Int32" />
+    <Property Name="item_weight" Type="Int32" />
+    <NavigationProperty Name="item" Relationship="better_shopModel.item_id" FromRole="orderdetail" ToRole="item" />
+    <NavigationProperty Name="order" Relationship="better_shopModel.order_id" FromRole="orderdetail" ToRole="order" />
+  </EntityType>
+  <Association Name="item_id">
+    <End Type="better_shopModel.item" Role="item" Multiplicity="1" />
+    <End Type="better_shopModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="orderdetail">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="order_id">
+    <End Type="better_shopModel.order" Role="order" Multiplicity="1" />
+    <End Type="better_shopModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="orderdetail">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

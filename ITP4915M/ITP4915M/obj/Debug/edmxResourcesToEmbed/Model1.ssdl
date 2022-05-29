@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="better_shopModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="item_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="item_name" Type="varchar" MaxLength="255" />
+    <Property Name="item_price" Type="int" Nullable="false" />
+    <Property Name="item Dimension" Type="varchar" MaxLength="18" Nullable="false" />
+    <Property Name="item_Weight" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="item_describe" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="item_discount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="staff_id" Type="varchar" MaxLength="50" />
+    <Property Name="order_amount" Type="int" />
+    <Property Name="order_created_date" Type="date" />
+  </EntityType>
+  <EntityType Name="orderdetails">
+    <Key>
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="item_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="order_id" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="item_qty" Type="int" />
+    <Property Name="item_weight" Type="int" />
+  </EntityType>
+  <Association Name="item_id">
+    <End Role="item" Type="Self.item" Multiplicity="1" />
+    <End Role="orderdetails" Type="Self.orderdetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="orderdetails">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="order_id">
+    <End Role="order" Type="Self.order" Multiplicity="1" />
+    <End Role="orderdetails" Type="Self.orderdetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="orderdetails">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="better_shopModelStoreContainer">
+    <EntitySet Name="item" EntityType="Self.item" Schema="better_shop" store:Type="Tables" />
+    <EntitySet Name="order" EntityType="Self.order" Schema="better_shop" store:Type="Tables" />
+    <EntitySet Name="orderdetails" EntityType="Self.orderdetails" Schema="better_shop" store:Type="Tables" />
+    <AssociationSet Name="item_id" Association="Self.item_id">
+      <End Role="item" EntitySet="item" />
+      <End Role="orderdetails" EntitySet="orderdetails" />
+    </AssociationSet>
+    <AssociationSet Name="order_id" Association="Self.order_id">
+      <End Role="order" EntitySet="order" />
+      <End Role="orderdetails" EntitySet="orderdetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
